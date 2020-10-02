@@ -1,0 +1,8 @@
+preup() {
+	rfkill unblock all
+	return 0
+}
+
+modules="wpa_supplicant"
+config="dhcp"
+wpa_supplicant="-Dnl80211 -d -f /var/log/wpa_supplicant.log"
