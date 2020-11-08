@@ -25,6 +25,8 @@ alias cp='cp -v'
 # that special request.
 # The `+short` flag instructs `dig` to return a less verbose result.
 alias my_ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# Returns the IP addresses of all my interfaces
 alias ips="ifconfig | grep -P \"inet\\s\" | awk '{ print \$2 }'"
 
 # For quick troubleshooting. The `-e` flag prints the link-level on each dump line (e.g.
