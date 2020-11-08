@@ -1,2 +1,0 @@
-# I prefer to enter KDE via `startx`
-exec dbus-launch --exit-with-session startplasma-x11
