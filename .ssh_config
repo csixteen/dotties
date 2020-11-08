@@ -1,0 +1,34 @@
+# Copy to ~/.ssh/config
+
+Host github.com
+        ControlMaster auto
+        ControlPersist 120
+
+Host *
+        # Use a shared channel for all sessions to the same host,
+        # instead of always opening a new one. When set to `auto`,
+        # it will try to use a master connection, but falls back
+        # to creating a new one if one doesn't already exist.
+        ControlMaster auto
+        # Path to the control socket used for connection sharing.
+        # This directory should not be writable by other users.
+        # The tokens %r, %h and %p correspond to the remote user,
+        # remote hostname and remote port, respectively.
+        ControlPath ~/.ssh/control/%r@%h:%p
+        ControlPersist 1800
+
+        Compression yes
+        # Send keep alive messages to detect if the network goes down
+        # or if the remote host dies. This is good because it will
+        # immediately close the connection once this is detected
+        TCPKeepAlive yes
+        # If no data has been received from the server, the client will
+        # send a message after this interval requesting a response from
+        # the server.
+        ServerAliveInterval 20
+        # This is the maximum number of alive messages that we can send
+        # to the server and not have any response. These messages are
+        # different from TCP Keep Alive messages, since these are sent
+        # via the encrypted channel, hence not spoofable. The TCP Keep
+        # Alive messages are spoofable.
+        ServerAliveCountMax 10
