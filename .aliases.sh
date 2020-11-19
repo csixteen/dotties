@@ -51,6 +51,7 @@ alias watch_conn="watch -d -n1 lsof -i"
 #-----------------
 
 alias e='emerge --ask --verbose --deep --newuse'
+alias es="emerge --sync"
 alias euw='e --update @world'
 
 
@@ -62,9 +63,24 @@ alias euw='e --update @world'
 # then the next command word is also checked for alias expansion. I prefer this to using something
 # like alias sudo="sudo ".
 # https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Aliases
-alias sd="sudo "
+alias sd='sudo '
+# For some special cases, such as tools installed via pyenv-pip, which live under
+# $HOME/.pyenv/shims/. No need to globally affect everything by changing sudoers.
+alias sdp='sudo env "PATH=$PATH" '
 
 # Shortcuts
 alias g="git"
 alias v="vim"
 alias diskspace="df -P -kH"
+
+
+#-----------------------------------------------------------------
+# ProtonVPN - Check https://protonvpn.com/support/linux-vpn-tool/
+#-----------------------------------------------------------------
+
+alias vpn_connect="sdp protonvpn c"
+alias vpn_disconnect="sdp protonvpn d"
+alias vpn_refresh="sdp protonvpn refresh"
+alias vpn_status="sdp protonvpn s"
+alias vpn_reconnect="sdp protonvpn r"
+alias vpn_fast_conn="sdp protonvpn c --sc"
