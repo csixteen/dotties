@@ -1,0 +1,3 @@
+www-client/firefox clang hwaccel pulseaudio
+media-libs/libpng apng
+media-libs/libvpx postproc

@@ -10,6 +10,7 @@ dev-qt/qtwebchannel qml
 dev-qt/qtwebengine widgets
 kde-apps/ktp-common-internals otr
 kde-plasma/plasma-meta browser-integration crypt desktop-portal discover elogind grub
+kde-frameworks/kitemmodels qml
 media-libs/libvpx svc
 media-libs/mesa wayland
 media-video/vlc vorbis ogg
