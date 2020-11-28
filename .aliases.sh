@@ -55,9 +55,9 @@ alias es="emerge --sync"
 alias euw='e --update @world'
 
 
-#-------------
-# Extra stuff
-#-------------
+#--------------
+#     Sudo
+#--------------
 
 # Allows me to run aliases as `sudo`. Essentially, if the last character of an alias is a blank,
 # then the next command word is also checked for alias expansion. I prefer this to using something
@@ -68,10 +68,16 @@ alias sd='sudo '
 # $HOME/.pyenv/shims/. No need to globally affect everything by changing sudoers.
 alias sdp='sudo env "PATH=$PATH" '
 
-# Shortcuts
+
+#--------------------
+#  Random shortcuts
+#--------------------
+
 alias g="git"
+alias k="kubectl"
 alias v="vim"
 alias diskspace="df -P -kH"
+alias kmodules="find /lib/modules/$(uname -r) -type f -name '*.ko*'"
 
 
 #-----------------------------------------------------------------

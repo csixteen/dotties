@@ -1,0 +1,41 @@
+[alias]
+        c = commit -am
+        co = checkout
+        lg =  log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+        s = status
+        undocommit = reset HEAD~
+        undopush = push -f origin HEAD^:master
+
+[color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+
+[color "diff"]
+        commit = green bold
+        frag = magenta bold
+        meta = yellow bold
+        old = red bold
+
+[color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+
+[core]
+        attributesfile = ~/.gitattributes
+        editor = vim
+        excludesfile = ~/.gitignore
+
+[fetch]
+        prune = true
+
+[log]
+        date = relative
+
+[push]
+        followTags = true
+
+[user]
+	email = csixteen@protonmail.com
+	name = Pedro Rodrigues
