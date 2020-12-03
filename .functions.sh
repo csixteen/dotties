@@ -16,9 +16,12 @@ scan_network() {
         sudo iw dev $IFACE scan | grep -E '(^BSS|SSID:)'
 }
 
+
+#------------------------------------------------------
 # Read an RFC as if it were a man page...sort of.
-# Usage: rfc <RFC number> (e.g. 793)
-rfc() {
+# Usage: rfc_read <RFC number> (e.g. 793)
+
+rfc_read() {
         local rfc_file="https://tools.ietf.org/rfc/rfc${1}.txt"
         local rfc_exists=$(                                   \
                 curl                                          \
@@ -35,6 +38,12 @@ rfc() {
                 curl $rfc_file 2> /dev/null | less
         fi
 }
+
+
+#---------------------------------------------------------
+# Search for an RFC like a boss. No extra dependencies
+# needed.
+# Usage: rfc_search <name> (e.g. dns)
 
 rfc_search() {
         local script="
