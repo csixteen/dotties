@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Firewall"
+description="Simple not-permissive iptables firewall"
+command=/etc/iptables/rules.sh
+
+
+start() {
+	einfo "Starting Firewall"
+	eindent
+
+	${command}
+	eend $? "Failed to load iptables rules!"
+}
+
+stop() {
+	einfo "Stopping Firewall...nothing to do, really."
+}
