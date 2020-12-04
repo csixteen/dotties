@@ -4,6 +4,7 @@
 # - https://www.digitalocean.com/community/tutorials/how-to-implement-a-basic-firewall-template-with-iptables-on-ubuntu-14-04
 # - https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture
 
+IFACE_WLAN="wlp1s0"
 IPTABLES_CMD=$(which iptables)
 
 #--------------------
@@ -30,15 +31,27 @@ $IPTABLES_CMD -N ICMP
 #    TCP Traffic Chain
 #------------------------
 
-# Allow SSH traffic
+$IPTABLES_CMD -A TCP -p tcp --dport 22 -j LOG --log-prefix "SSH connection: "
 $IPTABLES_CMD -A TCP -p tcp --dport 22 -j ACCEPT
+$IPTABLES_CMD -A TCP -p tcp --dport 3306 -j LOG --log-prefix "MySQL connection: "
+$IPTABLES_CMD -A TCP -p tcp --dport 3306 -j ACCEPT
+
+
+#---------------------------
+#    ICMP Traffic Chain
+#---------------------------
+
+$IPTABLES_CMD -A ICMP -p icmp --icmp-type echo-reply -s 0/0 -i $IFACE_WLAN -j ACCEPT
+$IPTABLES_CMD -A ICMP -p icmp --icmp-type destination-unreachable -s 0/0 -i $IFACE_WLAN -j ACCEPT
+$IPTABLES_CMD -A ICMP -p icmp --icmp-type time-exceeded -s 0/0 -i $IFACE_WLAN -j ACCEPT
+$IPTABLES_CMD -A ICMP -p icmp -i $IFACE_WLAN -j DROP
 
 
 #-----------------------------------------
 #    Accept anything to/from loopback
 #-----------------------------------------
 
-$IPTABLES_CMD -A INPUT -i lo -j ACCEPT
+$IPTABLES_CMD -I INPUT 1 -i lo -j ACCEPT
 $IPTABLES_CMD -I OUTPUT 1 -o lo -j ACCEPT
 
 
