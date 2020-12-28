@@ -1,8 +1,14 @@
 [alias]
-        c = commit -am
+        cm = commit -am
         co = checkout
+        d = diff
+        dv = difftool -t vimdiff -y
+        last = log -1 HEAD --stat
         lg =  log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-        s = status
+        ll = log --oneline
+        rv = remote -v
+        s = status -sb
+        se = !git rev-list --all | git grep -n --full-name -F
         undocommit = reset HEAD~
         undopush = push -f origin HEAD^:master
 
