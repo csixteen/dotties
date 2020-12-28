@@ -10,7 +10,7 @@
         ll = log --oneline
         rv = remote -v
         s = status -sb
-        se = !git rev-list --all | git grep -n --full-name -F
+        se = !git rev-list --all | xargs git grep -n --full-name -F
         undocommit = reset HEAD~
         undopush = push -f origin HEAD^:master
 
