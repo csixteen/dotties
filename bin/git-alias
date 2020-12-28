@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-git config --global --get-regexp alias | cut -d . -f 2 | awk -F' ' '{ xx=$1; $1=""; print xx " >>>" $0 }'
+git config --global --get-regexp alias |                 \
+        cut -d . -f 2 |                                  \
+        awk -F' ' '{
+            xx=$1;
+            $1="";
+            printf("%s%s%s >>>%s\n", "\033[1;33m", xx, "\033[0m", $0)
+        }'
