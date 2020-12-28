@@ -16,6 +16,10 @@ scan_network() {
         sudo iw dev $IFACE scan | grep -E '(^BSS|SSID:)'
 }
 
+cdl() {
+        builtin cd "$@" && ls
+}
+
 
 #------------------------------------------------------
 # Read an RFC as if it were a man page...sort of.

@@ -6,6 +6,15 @@ alias ..="cd .."
 alias cd..="cd .."
 
 
+#---------
+# Listing
+#---------
+
+# Sort files by modification time
+alias left="ls -At -1"
+alias ll="ls --human-readable -S --size -1 --classify"
+
+
 #--------------------------------
 # File manipulation - mv, rm, cp
 #--------------------------------
@@ -73,6 +82,7 @@ alias sdp='sudo env "PATH=$PATH" '
 #  Random shortcuts
 #--------------------
 
+alias cgit="cd $(git rev-parse --show-toplevel)"
 alias g="git"
 alias k="kubectl"
 alias v="vim"

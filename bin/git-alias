@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+git config --global --get-regexp alias | cut -d . -f 2 | awk -F' ' '{ xx=$1; $1=""; print xx " >>>" $0 }'
