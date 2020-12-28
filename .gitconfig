@@ -1,5 +1,7 @@
 [alias]
+        backup = !git ls-files --others --exclude-standard -z | xargs -0 zip -r ~/Code/backup-untracked/$(git rev-parse --show-toplevel | xargs basename).zip
         cm = commit -am
+        cnt = rev-list --all --count
         co = checkout
         d = diff
         dv = difftool -t vimdiff -y
