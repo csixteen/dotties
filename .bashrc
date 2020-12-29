@@ -1,14 +1,12 @@
-# Some sanity check
-
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive.  Be done now!
 	return
 fi
 
 
-#------------------------------------------------------------------
-# Shamelessly copying from Paul Irish's dotfiles.
-# https://github.com/paulirish/dotfiles/blob/master/.bash_profile
+#------------------
+# Load the goodies
+#------------------
 
 for file in ~/.{paths,aliases,functions,shell_prompt}.sh; do
         [ -r "$file" ] && source "$file"
