@@ -1,0 +1,75 @@
+!!----------------!!
+!!   Xft Config   !!
+!!----------------!!
+!Xft.dpi:                       120
+Xft.antialias:                  true
+Xft.rgba:                       rgb
+Xft.hinting:                    true
+Xft.hintstyle:                  hintfull
+Xft.autohint:                   false
+Xft.lcdfilter:                  lcddefault
+
+!! URxvt
+URxvt.termName:                 rxvt-unicode
+URxvt.url-launcher:             /usr/bin/firefox
+URxvt.underlineURLs:            True
+
+!!--------------------------!!
+!! Commodore64 Color scheme !!
+!!--------------------------!!
+*background:                    #0a083b
+*foreground:                    #ffffff
+*fadeColor:                     #002b36
+*cursorColor:                   #93a1a1
+*pointerColorBackground:        #586e75
+*pointerColorForeground:        #93a1a1
+
+! black dark/light
+*color0:                        #5f6464
+*color8:                        #828684
+
+! red dark/light
+*color1:                        #ff0000
+*color9:                        #f17974
+
+! green dark/light
+*color2:                        #00c200
+*color10:                       #5ff967
+
+! yellow dark/light
+*color3:                        #fffb00
+*color11:                       #fefb67
+
+! blue dark/light
+*color4:                        #4c6bff
+*color12:                       #6871ff
+
+! magenta dark/light
+*color5:                        #c930c7
+*color13:                       #ff76ff
+
+! cyan dark/light
+*color6:                        #00c5c7
+*color14:                       #5ffdff
+
+! white dark/light
+*color7:                        #c7c7c7
+*color15:                       #feffff
+
+! Cursor
+URxvt.cursorBlink:              true
+URxvt.cursorColor:              yellow
+
+URxvt.depth:                    32
+URxvt.loginShell:               true
+URxvt*letterSpace:              -1
+
+! Scrollbar
+URxvt.scrollStyle:              rxvt
+URxvt.scrollBar:                false
+
+! Font
+URxvt.font:                     xft:Hack:style=Bold:antialias=true:hinting=full:pixelsize=14
+URxvt.boldFont:                 xft:Hack:style=Bold:antialias=true:hinting=full:pixelsize=14
+
+*utf8:                          1
