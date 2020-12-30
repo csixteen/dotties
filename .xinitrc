@@ -1,5 +1,4 @@
 #!/bin/sh
-# exec dbus-launch --exit-with-session startplasma-x11
 if [ -f ~/.Xprofile ]; then
         . ~/.Xprofile
 fi
