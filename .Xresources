@@ -9,14 +9,27 @@ Xft.hintstyle:                  hintfull
 Xft.autohint:                   false
 Xft.lcdfilter:                  lcddefault
 
-!! URxvt
+!!---------!!
+!!  URxvt  !!
+!!---------!!
 URxvt.termName:                 rxvt-unicode
-URxvt.url-launcher:             /usr/bin/firefox
-URxvt.underlineURLs:            True
 
-!!--------------------------!!
-!! Commodore64 Color scheme !!
-!!--------------------------!!
+!! Perl Extensions !!
+URxvt.perl-ext-common:          default,selection-to-clipboard,clipboard,matcher,keyboard-select
+
+!! Clickable URLs
+URxvt.url-launcher:             /usr/bin/firefox
+URxvt.underlineURLs:            true
+URxvt.matcher.button:           1
+
+!! Copy & Paste
+URxvt.clipboard.autocopy:       true
+URxvt.clipboard.copycmd:        xclip -i -selection clipboard
+URxvt.clipboard.pastecmd:       xclip -o -selection clipboard
+URxvt.keysym.Control-Shift-C:   perl:clipboard:copy
+URxvt.keysym.Control-Shift-V:   perl:clipboard:paste
+
+!! Solarized Color scheme !!
 *background:                    #0a083b
 *foreground:                    #ffffff
 *fadeColor:                     #002b36

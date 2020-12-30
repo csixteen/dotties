@@ -112,12 +112,25 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
+# Alt+Tab ... sort of
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# Screenshot Key bindings
+## Full screen
+bindsym Print exec "scrot -q 100 ${HOME}/Pictures/Screenshots/%Y-%m-%d_%H%M%S_$w$h.png"
+## Selection
+bindsym $mod+Print exec "scrot -q 100 -s ${HOME}/Pictures/Screenshots/%Y-%m-%d_%H%M%S_$w$h.png"
+## Currently focused window
+bindsym Shift+Print exec "scrot -q 100 -u ${HOME}/Pictures/Screenshots/%Y-%m-%d_%H%M%S_$w$h.png"
+
+# Reload the configuration
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 in place and keeps session/layout. For whatever reason, Firefox
+# doesn't like this.
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Exit i3
+bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
