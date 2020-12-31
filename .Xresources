@@ -29,7 +29,7 @@ URxvt.clipboard.pastecmd:       xclip -o -selection clipboard
 URxvt.keysym.Control-Shift-C:   perl:clipboard:copy
 URxvt.keysym.Control-Shift-V:   perl:clipboard:paste
 
-!! Solarized Color scheme !!
+!! Commodore64 Color scheme !!
 *background:                    #0a083b
 *foreground:                    #ffffff
 *fadeColor:                     #002b36
