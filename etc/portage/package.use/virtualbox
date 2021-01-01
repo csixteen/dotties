@@ -1,0 +1,1 @@
+app-emulation/virtualbox -alsa -opengl -opus -qt5 headless
