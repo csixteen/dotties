@@ -3,20 +3,24 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+function exists {
+        command -v "$1" &> /dev/null
+}
 
-#------------------
-# Load the goodies
-#------------------
 
-for file in ~/.{paths,aliases,functions,shell_prompt}.sh; do
+# +------------------+
+# | Load the goodies |
+# +------------------+
+
+for file in ~/.{paths,functions,aliases,shell_prompt}.sh; do
         [ -r "$file" ] && source "$file"
 done
 unset file
 
 
-#---------------------
-#       History
-#---------------------
+# +---------------------+
+# |      History        |
+# +---------------------+
 
 # Use standard ISO 8601 timestamp
 # %F equivalent to %Y-%m-%d
@@ -40,6 +44,9 @@ shopt -s histappend  # append to history, don't overwrite it
 # history entry.
 shopt -s cmdhist
 
+# +-------------+
+# | Fancy pager |
+# +-------------+
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -50,4 +57,14 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export LESS="-R -X"                       # don't clear the screen on exit
 
 export EDITOR=vim
-export TERM=rxvt-unicode
+
+case $(uname) in
+        Linux)
+                export TERM=rxvt-unicode
+                ;;
+esac
+
+# +-----------------------+
+# | Kubectl auto-complete |
+# +-----------------------+
+exists kubectl && source <(kubectl completion bash)

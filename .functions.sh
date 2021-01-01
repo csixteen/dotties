@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 
-check_battery() {
+# Convenience: when not in a Window Manager
+function check_battery {
         percentage=$(                                                    \
                 upower -i /org/freedesktop/UPower/devices/battery_BAT0 | \
                 grep percentage |                                        \
@@ -11,12 +12,14 @@ check_battery() {
         echo $percentage
 }
 
-scan_network() {
+function scan_network {
         IFACE=${1:-wlp1s0}
         sudo iw dev $IFACE scan | grep -E '(^BSS|SSID:)'
 }
 
-cdl() {
+# For convenience: change to directory and list the contents
+# immediately.
+function cdl {
         builtin cd "$@" && ls
 }
 
@@ -25,7 +28,7 @@ cdl() {
 # Read an RFC as if it were a man page...sort of.
 # Usage: rfc_read <RFC number> (e.g. 793)
 
-rfc_read() {
+function rfc_read {
         local rfc_file="https://tools.ietf.org/rfc/rfc${1}.txt"
         local rfc_exists=$(                                   \
                 curl                                          \
@@ -47,9 +50,10 @@ rfc_read() {
 #---------------------------------------------------------
 # Search for an RFC like a boss. No extra dependencies
 # needed.
+# TODO: support multi-word search query
 # Usage: rfc_search <name> (e.g. dns)
 
-rfc_search() {
+function rfc_search {
         local script="
 import re
 import sys
@@ -81,6 +85,6 @@ for i in res:
         curl $query 2> /dev/null |     \
         sed -r '/^\s*$/d' |            \
         grep -A 5 "td class=\"doc\"" | \
-        python -c "$script"
+        /usr/bin/env python3 -c "$script"
 }
 

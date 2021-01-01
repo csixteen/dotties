@@ -1,32 +1,34 @@
-#------------
-# Navigation
-#------------
+# +------------+
+# | Navigation |
+# +------------+
 
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias cd..="cd .."
 
 
-#---------
-# Listing
-#---------
+# +---------+
+# | Listing |
+# +---------+
 
 # Sort files by modification time
 alias left="ls -At -1"
 alias ll="ls --human-readable -S --size -1 --classify"
 
 
-#--------------------------------
-# File manipulation - mv, rm, cp
-#--------------------------------
+# +--------------------------------+
+# | File manipulation - mv, rm, cp |
+# +--------------------------------+
 
 alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
 
 
-#--------------------------------
-# Networking and troubleshooting
-#--------------------------------
+# +--------------------------------+
+# | Networking and troubleshooting |
+# +--------------------------------+
 
 # `dig` is essentially sending a request for the IP of `myip.opendns.com` to
 # the nameserver `resolver1.opendns.com`. This nameserver automatically sends
@@ -55,9 +57,9 @@ alias open_conn="ss -tanp"
 alias watch_conn="watch -d -n1 lsof -i"
 
 
-#--------------
-#     Sudo
-#--------------
+# +--------------+
+# |    Sudo      |
+# +--------------+
 
 # Allows me to run aliases as `sudo`. Essentially, if the last character of an alias is a blank,
 # then the next command word is also checked for alias expansion. I prefer this to using something
@@ -69,12 +71,36 @@ alias sd='sudo '
 alias sdp='sudo env "PATH=$PATH" '
 
 
-#--------------------
-#  Random shortcuts
-#--------------------
+# +--------------------+
+# |  Random shortcuts  |
+# +--------------------+
 
-alias cgit="cd $(git rev-parse --show-toplevel)"
+alias cgit="cd \$(git rev-parse --show-toplevel)"
 alias g="git"
 alias k="kubectl"
 alias v="vim"
 alias diskspace="df -P -kH"
+
+
+# +-----------------------------------+
+# |   Linux / Gentoo specific stuff   |
+# +-----------------------------------+
+
+case $(uname) in
+        Linux)
+                alias e='emerge --ask --verbose --deep --newuse'
+                alias es="emerge --sync"
+                alias euw='e --update @world'
+                alias kmodules="find /lib/modules/$(uname -r) -type f -name '*.ko*'"
+
+                # !! ProtonVPN - Check https://protonvpn.com/support/linux-vpn-tool/ !!
+
+                exists protonvpn && alias vpn_connect="sdp protonvpn c"
+                exists protonvpn && alias vpn_disconnect="sdp protonvpn d"
+                exists protonvpn && alias vpn_refresh="sdp protonvpn refresh"
+                exists protonvpn && alias vpn_status="sdp protonvpn s"
+                exists protonvpn && alias vpn_reconnect="sdp protonvpn r"
+                exists protonvpn && alias vpn_fast_conn="sdp protonvpn c --sc"
+
+                ;;
+esac
