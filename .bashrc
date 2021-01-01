@@ -50,4 +50,4 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export LESS="-R -X"                       # don't clear the screen on exit
 
 export EDITOR=vim
-export TERM=screen-256color
+export TERM=rxvt-unicode
