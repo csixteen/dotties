@@ -23,6 +23,10 @@ function cdl {
         builtin cd "$@" && ls
 }
 
+function mkd {
+        mkdir -p "$1" && cd $1
+}
+
 
 #------------------------------------------------------
 # Read an RFC as if it were a man page...sort of.
