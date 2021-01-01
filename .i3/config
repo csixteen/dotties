@@ -26,7 +26,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # Lock screen
-bindsym $mod+l exec $lockcmd -c 111111
+bindsym $mod+l exec $lockcmd -c 000000
 
 # change focus
 bindsym $mod+j focus left

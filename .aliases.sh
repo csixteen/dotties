@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # +------------+
 # | Navigation |
 # +------------+
@@ -21,9 +23,9 @@ alias ll="ls --human-readable -S --size -1 --classify"
 # | File manipulation - mv, rm, cp |
 # +--------------------------------+
 
+alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -i -v'
-alias cp='cp -v'
 
 
 # +--------------------------------+
@@ -76,10 +78,12 @@ alias sdp='sudo env "PATH=$PATH" '
 # +--------------------+
 
 alias cgit="cd \$(git rev-parse --show-toplevel)"
-alias g="git"
-alias k="kubectl"
-alias v="vim"
 alias diskspace="df -P -kH"
+alias g="git"
+alias hosts="cat /etc/hosts"
+alias k="kubectl"
+alias untar='tar xvzf'
+alias v="vim"
 
 
 # +-----------------------------------+
@@ -88,6 +92,7 @@ alias diskspace="df -P -kH"
 
 case $(uname) in
         Linux)
+                alias afk="i3lock -c 000000"
                 alias e='emerge --ask --verbose --deep --newuse'
                 alias es="emerge --sync"
                 alias euw='e --update @world'
