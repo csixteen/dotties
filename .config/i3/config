@@ -4,6 +4,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# +-----------+
+# | Variables |
+# +-----------+
+
 set $mod Mod4
 set $term urxvt
 set $term_cwd ~/bin/urxvt_cwd
@@ -11,7 +15,29 @@ set $menu rofi -show drun -theme "solarized_alternate"
 set $barcmd i3status
 set $lockcmd i3lock
 
+
+# +--------------------------+
+# | Fonts, borders and style |
+# +--------------------------+
+
 font pango:Hack 10
+
+hide_edge_borders vertical
+for_window [class="urxvt"] border pixel 1
+
+
+# +-------+
+# | Focus |
+# +-------+
+
+focus_follows_mouse no
+popup_during_fullscreen smart
+workspace_auto_back_and_forth yes
+
+
+# +---------+
+# | Startup |
+# +---------+
 
 exec --no-startup-id feh --bg-scale ${HOME}/Pictures/wallpaper.png
 exec --no-startup-id xset r rate 262 57
@@ -170,6 +196,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        position top
         font pango:Hack 10
         status_command $barcmd --config ${HOME}/.config/i3/status.conf
 }
