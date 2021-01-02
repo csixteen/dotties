@@ -76,8 +76,8 @@ exists kubectl && source <(kubectl completion bash)
 
 # +-------------------------------+
 # | Any extra stuff you may need |
-
 # +-------------------------------+
+
 if [[ -e ".bashrc.local" ]]; then
         . ".bashrc.local"
 fi
