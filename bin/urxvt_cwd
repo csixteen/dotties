@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+# -----------------
+# Copyright : (c) 2021, Pedro Rodrigues <csixteen@protonmail.com>
+# License   : MIT
 
-set -eu -o pipefail
+set -eu -o pipefail -o errexit -o nounset
 
-# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/
 #
 # The idea is to find the PID of the terminal currently with focus.
 # Having the PID of the terminal, we can use `pstree` to find the last
@@ -15,26 +17,50 @@ set -eu -o pipefail
 CMD=urxvt
 CWD=~
 
+function check_or_die {
+        if ! command -v "$1" &> /dev/null ; then
+                echo "Couldn't find [$1]. Perhaps you need to install it?"
+                $CMD -cd $CWD
+                exit 1
+        fi
+}
+
+function echo_or_die {
+        echo $1
+        $CMD -cd $CWD
+        exit 2
+}
+
+check_or_die xdpyinfo
+check_or_die xprop
+check_or_die pstree
+
 FOCUSED_WINDOW_ID=$(xdpyinfo | grep focus | awk '{ print $3 }')
-if [ -z "$FOCUSED_WINDOW_ID" ]; then
-        echo "Can't get focused window ID"
-        exit 1
+if [[ -z "$FOCUSED_WINDOW_ID" ]]; then
+        echo_or_die "Can't get focused window ID"
+fi
+
+FOCUSED_WINDOW_NAME=$(xprop -id $FOCUSED_WINDOW_ID | grep -m 1 _NET_WM_NAME | sed -re 's/"//g' | awk '{ print $3 }')
+if [[ $FOCUSED_WINDOW_NAME == "i3" ]]; then
+        echo_or_die "No focused window on current workspace"
 fi
 
 FOCUSED_WINDOW_PID=$(xprop -id $FOCUSED_WINDOW_ID | grep -m 1 PID | awk '{ print $3 }')
-if [ -z "$FOCUSED_WINDOW_PID" ]; then
-        echo "Can't get focused window PID"
-        exit 2
+if [[ -z "$FOCUSED_WINDOW_PID" ]]; then
+        echo_or_die "Can't get focused window PID"
 fi
 
 TREE=$(pstree -lpA $FOCUSED_WINDOW_PID)
-LAST_CHILD_PID=$(echo $TREE | sed -re 's/\-{3}/ /g' | awk '{ print $NF }' | sed -re 's/[^0-9]//g')
-if [ -z "$LAST_CHILD_PID" ]; then
-        echo "Can't get PID of last child process"
-        exit 3
+if [[ -z "$TREE" ]]; then
+        echo_or_die "Can't retrieve process tree from focused window"
 fi
 
-if [ -e "/proc/$LAST_CHILD_PID/cwd" ]; then
+LAST_CHILD_PID=$(echo $TREE | sed -re 's/\-{3}/ /g' | awk '{ print $NF }' | sed -re 's/[^0-9]//g')
+if [[ -z "$LAST_CHILD_PID" ]]; then
+        echo_or_die "Can't get PID of last child process"
+fi
+
+if [[ -e "/proc/$LAST_CHILD_PID/cwd" ]]; then
         CWD=$(readlink /proc/$LAST_CHILD_PID/cwd)
 fi
 
