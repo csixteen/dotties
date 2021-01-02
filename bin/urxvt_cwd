@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# -----------------
-# Copyright : (c) 2021, Pedro Rodrigues <csixteen@protonmail.com>
-# License   : MIT
 
 set -eu -o pipefail
 
@@ -30,7 +27,7 @@ if [ -z "$FOCUSED_WINDOW_PID" ]; then
 fi
 
 TREE=$(pstree -lpA $FOCUSED_WINDOW_PID)
-LAST_CHILD_PID=$(echo $TREE | sed -re 's/\-\-\-/ /g' | awk '{ print $NF }' | sed -re 's/[^0-9]//g')
+LAST_CHILD_PID=$(echo $TREE | sed -re 's/\-{3}/ /g' | awk '{ print $NF }' | sed -re 's/[^0-9]//g')
 if [ -z "$LAST_CHILD_PID" ]; then
         echo "Can't get PID of last child process"
         exit 3
