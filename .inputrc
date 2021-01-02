@@ -1,0 +1,35 @@
+set completion-ignore-case on
+
+# Asks to show all possibilities if there are more
+# than 150 matches.
+set completion-query-items 150
+
+# Allow UTF-8 input
+set convert-meta on
+set input-meta on
+
+set mark-directories on
+set mark-symlinked-directories on
+
+# Only match hidden files if the pattern explicitly
+# starts with a '.'
+set match-hidden-files off
+
+# Allow UTF-8 output
+set output-meta on
+
+# Don't use a pager to show possible completions
+set page-completions off
+
+# Try to be a bit smarter when trying to perform completion
+# in the middle of a word.
+set skip-completed-text on
+
+# Appends a character indicating the filetype when listing
+# possible completions
+set visible-stats on
+
+# Use Down/Up keys to use search through history using
+# the text that has been already entered.
+"\e[B": history-search-forward
+"\e[A": history-search-backward

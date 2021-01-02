@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# -----------------
+# Copyright : (c) 2021, Pedro Rodrigues <csixteen@protonmail.com>
+# License   : MIT
+
+set -eu -o pipefail
+
+#
+# The idea is to find the PID of the terminal currently with focus.
+# Having the PID of the terminal, we can use `pstree` to find the last
+# child process of the terminal window's process. Having the PID of the
+# last child process, we then try and retrieve its current working
+# directory. Finally, if we successfully retrieve the cwd of the last
+# child process of the currently focused terminal, we `cd` into that
+# directory and open `urxvt` from there.
+
+CMD=urxvt
+CWD=~
+
+FOCUSED_WINDOW_ID=$(xdpyinfo | grep focus | awk '{ print $3 }')
+if [ -z "$FOCUSED_WINDOW_ID" ]; then
+        echo "Can't get focused window ID"
+        exit 1
+fi
+
+FOCUSED_WINDOW_PID=$(xprop -id $FOCUSED_WINDOW_ID | grep -m 1 PID | awk '{ print $3 }')
+if [ -z "$FOCUSED_WINDOW_PID" ]; then
+        echo "Can't get focused window PID"
+        exit 2
+fi
+
+TREE=$(pstree -lpA $FOCUSED_WINDOW_PID)
+LAST_CHILD_PID=$(echo $TREE | sed -re 's/\-\-\-/ /g' | awk '{ print $NF }' | sed -re 's/[^0-9]//g')
+if [ -z "$LAST_CHILD_PID" ]; then
+        echo "Can't get PID of last child process"
+        exit 3
+fi
+
+if [ -e "/proc/$LAST_CHILD_PID/cwd" ]; then
+        CWD=$(readlink /proc/$LAST_CHILD_PID/cwd)
+fi
+
+$CMD -cd $CWD

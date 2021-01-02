@@ -21,6 +21,11 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $term
 
+# start a terminal from the current working
+# directory of the windows that is currently
+# focused
+bindsym $mod+b exec ~/bin/urxvt_cwd
+
 # kill focused window
 bindsym $mod+Shift+q kill
 

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# -----------------
+# Copyright : (c) 2021, Pedro Rodrigues <csixteen@protonmail.com
+# License   : MIT
 
 
 # Convenience: when not in a Window Manager
@@ -24,7 +27,7 @@ function cdl {
 }
 
 function mkd {
-        mkdir -p "$1" && cd $1
+        mkdir -p "$1" && cd "$1"
 }
 
 
