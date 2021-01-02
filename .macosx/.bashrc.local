@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+# +--------------------+
+# | Some extra aliases |
+# +--------------------+
+
+alias c='clerk'
+
+
+# +---+
+# | Z |
+# +---+
+
+. /usr/local/etc/profile.d/z.sh
+
+
+# +-----------------+
+# | Bash completion |
+# +-----------------+
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+
+# +-------+
+# | Paths |
+# +-------+
+
+# Standard ML of New Jersey
+export PATH="/usr/local/smlnj/bin:$PATH"
+
+LOCAL_OPT="/usr/local/opt"
+
+# LibreSSL
+export PATH="$LOCAL_OPT/libressl/bin:$PATH"
+
+# Coreutils, Findutils and other
+# GNU stuff and respective man pages.
+export PATH="$LOCAL_OPT/make/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/grep/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/coreutils/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/findutils/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/gnu-tar/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/gnu-sed/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/gawk/libexec/gnubin:$PATH"
+export PATH="$LOCAL_OPT/ncurses/bin:$PATH"
+
+export MANPATH="$LOCAL_OPT/make/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/grep/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/findutils/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/gnu-tar/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/gnu-sed/libexec/gnuman:$MANPATH"
+export MANPATH="$LOCAL_OPT/gawk/libexec/gnuman:$MANPATH"
+
+# Others
+export PATH="$LOCAL_OPT/sqlite/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$LOCAL_OPT/icu4c/bin:$PATH"
+export PATH="$LOCAL_OPT/icu4c/sbin:$PATH"

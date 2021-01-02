@@ -28,6 +28,15 @@ alias mv='mv -v'
 alias rm='rm -i -v'
 
 
+# +----------+
+# | Grepping |
+# +----------+
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+
+
 # +--------------------------------+
 # | Networking and troubleshooting |
 # +--------------------------------+

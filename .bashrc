@@ -68,3 +68,10 @@ esac
 # | Kubectl auto-complete |
 # +-----------------------+
 exists kubectl && source <(kubectl completion bash)
+
+# +-------------------------------+
+# | Any extra stuff you main need |
+# +-------------------------------+
+if [[ -e ".bashrc.local" ]]; then
+        . ".bashrc.local"
+fi
