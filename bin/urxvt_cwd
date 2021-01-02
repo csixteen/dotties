@@ -2,6 +2,7 @@
 
 set -eu -o pipefail
 
+# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/
 #
 # The idea is to find the PID of the terminal currently with focus.
 # Having the PID of the terminal, we can use `pstree` to find the last
