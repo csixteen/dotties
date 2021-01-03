@@ -64,6 +64,10 @@ case $(uname) in
         Linux)
                 export TERM=rxvt-unicode
                 ;;
+
+        Darwin)
+                export TERM=xterm-256color
+                ;;
 esac
 
 
@@ -78,6 +82,6 @@ exists kubectl && source <(kubectl completion bash)
 # | Any extra stuff you may need |
 # +-------------------------------+
 
-if [[ -e ".bashrc.local" ]]; then
-        . ".bashrc.local"
+if [[ -e ~/.bashrc.local ]]; then
+        . ~/.bashrc.local
 fi
