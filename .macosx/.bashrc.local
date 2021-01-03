@@ -4,7 +4,10 @@
 # | Some extra aliases |
 # +--------------------+
 
+export LSCOLORS=gxBxhxDxfxfxfxfxfxcxcx
+
 alias c='clerk'
+alias ls='ls -GpF'
 
 
 # +---+
