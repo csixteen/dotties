@@ -21,28 +21,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; The packages that I want installed. They can also
-;; be installed with M-x package-install
-(defvar my-packages
-  '(
-    ;; edit html tags like sexps
-    tagedit
-
-    ;; colorful parenthesis matching
-    rainbow-delimiters
-
-    ;; Enhances M-x to allow easier execution of commands. Provides
-    ;; a filterable list of possible commands in the minibuffer
-    ;; http://www.emacswiki.org/emacs/Smex
-    smex
-
-    ;; git integration
-    magit))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
 ;;------------------------
 ;;  Basic customizations
 ;;------------------------
@@ -50,12 +28,19 @@
 (menu-bar-mode -1)
 (global-display-line-numbers-mode)
 
+;;------------------
+;;   Company mode
+;;------------------
+
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-minimum-prefix-length 1
+      company-idle-delay 0.0)
 
 ;;------------
 ;;  Go stuff
 ;;------------
 
-(add-hook 'go-mode-hook 'lsp-deferred)
+(add-hook 'go-mode-hook #'lsp)
 
 ;;---------------
 ;;  Rust stuff
@@ -63,6 +48,8 @@
 
 (add-hook 'rust-mode-hook
 	  (lambda () (setq indent-tabs-mode nil)))
+(add-hook 'rust-mode-hook #'lsp)
+(setq rust-format-on-save t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -77,7 +64,7 @@
  '(custom-safe-themes
    '("7661b762556018a44a29477b84757994d8386d6edee909409fabe0631952dad9" default))
  '(package-selected-packages
-   '(magit python-mode go-mode markdown-mode gruvbox-theme rust-mode)))
+   '(lsp-treemacs treemacs company lsp-mode magit python-mode go-mode markdown-mode gruvbox-theme rust-mode)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
