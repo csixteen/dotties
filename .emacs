@@ -25,8 +25,23 @@
 ;;  Basic customizations
 ;;------------------------
 
-(menu-bar-mode -1)
+(menu-bar-mode -1)  ; Removes clutter
 (global-display-line-numbers-mode)
+(show-paren-mode 1)
+
+;; Mode line
+(column-number-mode)
+(which-function-mode)
+(display-time)
+(display-battery-mode)
+
+;; Backup settings
+(setq backup-by-copying t)
+(setq backup-directory-alist '(("." . "~/.saves")))
+(setq delete-old-versions t)
+(setq kept-new-versions 6)
+(setq kept-old-versions 2)
+(setq version-control t)
 
 ;;------------------
 ;;   Company mode
@@ -35,6 +50,14 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.0)
+
+;;-----------------
+;;    Org mode
+;;-----------------
+
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 ;;------------
 ;;  Go stuff
