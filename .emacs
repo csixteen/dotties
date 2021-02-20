@@ -36,6 +36,11 @@
 (menu-bar-mode -1)  ; Removes clutter
 (global-display-line-numbers-mode)
 (show-paren-mode 1)
+(global-set-key "\C-xt" 'delete-trailing-whitespace)
+
+;; Making Emacs scroll like Vim
+(setq scroll-step           1
+      scroll-conservatively 10000)
 
 ;; Mode line
 (column-number-mode)
