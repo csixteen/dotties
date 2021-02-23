@@ -28,12 +28,37 @@
   (package-refresh-contents))
 
 
+;; The packages I want to have installed. This is to prevent
+;; having to run `package-install-selected-packages` in new
+;; environments.
+(defvar my-packages
+  '(
+    color-theme-sanityinc-tomorrow
+    company
+    go-mode
+    gruvbox-theme
+    lsp-mode
+    lsp-treemacs
+    magit
+    markdown-mode
+    paredit
+    python-mode
+    rainbow-delimiters
+    rust-mode
+    slime
+    treemacs
+    zenburn-theme))
+
+(dolist (p my-packages)
+  (unless (package-installed-p p)
+    (package-install p)))
+
+
 ;;------------------------
 ;;  Basic customizations
 ;;------------------------
 
 (menu-bar-mode -1)  ; Removes clutter
-(global-display-line-numbers-mode)
 (show-paren-mode 1)
 (global-set-key "\C-xt" 'delete-trailing-whitespace)
 
@@ -52,9 +77,11 @@
 
 ;; Mode line
 (column-number-mode)
-(which-function-mode)
 (display-time)
 (display-battery-mode)
+(global-display-line-numbers-mode)
+(global-hl-line-mode 1)
+(which-function-mode)
 
 ;; Backup settings
 (setq backup-by-copying t)
@@ -69,6 +96,13 @@
 
 ;; Display byte-compiler warnings on error
 (setq byte-compile-debug t)
+
+;; Navigation
+(ido-mode t)  ; http://www.emacswiki.org/emacs/InteractivelyDoThings
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(setq split-height-threshold 0)
+(setq split-width-threshold 0)
 
 
 ;;------------------
@@ -134,6 +168,15 @@
 
 (add-hook 'rust-mode-hook #'lsp)
 (setq rust-format-on-save t)
+
+
+;;-----------
+;;   Utils
+;;-----------
+
+(defun date()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
 
 
 ;;--------------------------
