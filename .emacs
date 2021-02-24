@@ -67,7 +67,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(setq rinb-bell-function 'ignore)
+(setq ring-bell-function 'ignore)
 (show-paren-mode 1)
 (global-set-key "\C-xt" 'delete-trailing-whitespace)
 
