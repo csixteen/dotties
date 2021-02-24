@@ -1,5 +1,9 @@
 ;; -*- emacs-lisp -*-
 
+(setq inhibit-spash-screen-t t)
+
+(set-frame-font "Hack Bold 11")
+
 ;; If I'm on Linux (I use Gentoo)
 (if (eq system-type 'gnu/linux)
   (require 'site-gentoo))
@@ -58,7 +62,12 @@
 ;;  Basic customizations
 ;;------------------------
 
-(menu-bar-mode -1)  ; Removes clutter
+;; Removes clutter
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(setq rinb-bell-function 'ignore)
 (show-paren-mode 1)
 (global-set-key "\C-xt" 'delete-trailing-whitespace)
 
