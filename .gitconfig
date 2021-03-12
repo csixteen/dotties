@@ -9,6 +9,7 @@
         last = log -1 HEAD --stat
         lg =  log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
         ll = log --oneline
+        p = push -u origin HEAD
         rv = remote -v
         s = status -sb
         se = !git rev-list --all | xargs git grep -n --full-name -F
