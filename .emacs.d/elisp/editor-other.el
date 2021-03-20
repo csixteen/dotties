@@ -29,10 +29,3 @@
 (add-hook 'go-mode-hook #'lsp)
 (add-hook 'before-save-hook 'gofmt-before-save)
 
-
-;;---------------
-;;  Rust stuff
-;;---------------
-
-(add-hook 'rust-mode-hook #'lsp)
-(setq rust-format-on-save t)
