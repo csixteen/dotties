@@ -42,8 +42,21 @@ workspace_auto_back_and_forth yes
 exec --no-startup-id feh --bg-scale ${HOME}/Pictures/wallpaper.png
 exec --no-startup-id xset r rate 262 57
 
+# +------------------+
+# | Floating windows |
+# +------------------+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+floating_minimum_size 150 x 150
+floating_maximum_size 2500 x 1500
+
+for_window [class="mplayer"] floating enable
+
+# +--------------+
+# | Key bindings |
+# +--------------+
 
 # start a terminal
 bindsym $mod+Shift+Return exec $term
@@ -60,7 +73,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # Lock screen
-bindsym $mod+l exec $lockcmd -c 000000
+bindsym $mod+Shift+l exec $lockcmd -c 000000
+
+# Suspend
+bindsym $mod+Pause exec loginctl suspend
 
 # change focus
 bindsym $mod+j focus left
@@ -74,10 +90,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
