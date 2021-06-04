@@ -35,6 +35,9 @@
   '(
     color-theme-sanityinc-tomorrow
     company
+    docker
+    docker-compose-mode
+    dockerfile-mode
     exec-path-from-shell
     flycheck
     go-mode
@@ -45,6 +48,7 @@
     paredit
     python-mode
     rainbow-delimiters
+    racket-mode
     rustic
     slime
     treemacs
@@ -77,6 +81,10 @@
 ;; Rust
 
 (load "editor-rust.el")
+
+;; StandardML
+
+(load "editor-sml.el")
 
 ;; SLIME
 
