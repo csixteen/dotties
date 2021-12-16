@@ -41,6 +41,7 @@
     exec-path-from-shell
     flycheck
     go-mode
+    haskell-mode
     lsp-metals
     lsp-mode
     lsp-treemacs
@@ -135,7 +136,7 @@
  '(nrepl-message-colors
    '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(package-selected-packages
-   '(sml-mode toml-mode lsp-ui zenburn-theme yasnippet use-package slime rustic rainbow-delimiters python-mode paredit magit lsp-treemacs lsp-mode go-mode flycheck exec-path-from-shell dockerfile-mode docker-compose-mode docker company color-theme-sanityinc-tomorrow lsp-metals scala-mode sbt-mode))
+   '(haskell-mode sml-mode toml-mode lsp-ui zenburn-theme yasnippet use-package slime rustic rainbow-delimiters python-mode paredit magit lsp-treemacs lsp-mode go-mode flycheck exec-path-from-shell dockerfile-mode docker-compose-mode docker company color-theme-sanityinc-tomorrow lsp-metals scala-mode sbt-mode))
  '(pdf-view-midnight-colors '("#282828" . "#fbf1c7"))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map

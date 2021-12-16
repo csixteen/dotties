@@ -1,1 +1,2 @@
-app-editors/emacs -alsa
+app-emacs/emacs-common gui
+app-editors/emacs -alsa -dbus athena dynamic-loading gui imagemagick inotify json lcms png ssl svg threads tiff xft zlib
