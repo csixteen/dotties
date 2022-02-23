@@ -2,7 +2,7 @@
 
 (setq inhibit-splash-screen t)
 
-(set-frame-font "Hack Bold 12")
+(set-frame-font "Hack Bold 11")
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
