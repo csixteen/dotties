@@ -39,6 +39,8 @@
     doom-themes
     flatland-theme
     flycheck
+    geiser-chicken
+    geiser-mit
     gruvbox-theme
     haskell-mode
     lsp-haskell
@@ -179,7 +181,7 @@
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(lsp-haskell flatland-theme clues-theme gruvbox-theme cyberpunk-theme doom-themes spacemacs-theme solarized-theme haskell-mode toml-mode lsp-ui zenburn-theme yasnippet use-package slime rustic sml-mode rainbow-delimiters paredit magit lsp-treemacs lsp-mode flycheck company))
+   '(geiser-mit geiser-chicken lsp-haskell flatland-theme clues-theme gruvbox-theme cyberpunk-theme doom-themes spacemacs-theme solarized-theme haskell-mode toml-mode lsp-ui zenburn-theme yasnippet use-package slime rustic sml-mode rainbow-delimiters paredit magit lsp-treemacs lsp-mode flycheck company))
  '(pdf-view-midnight-colors '("#282828" . "#fbf1c7"))
  '(pos-tip-background-color "#2f2f2e")
  '(pos-tip-foreground-color "#999891")

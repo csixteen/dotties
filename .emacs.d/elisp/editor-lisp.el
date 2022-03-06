@@ -26,3 +26,8 @@
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
+
+
+;; Geiser / Chicken
+
+(setq geiser-active-implementations '(chicken mit))
