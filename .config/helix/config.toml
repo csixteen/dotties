@@ -1,0 +1,17 @@
+theme = "onedark"
+
+[editor]
+bufferline = "always"
+line-number = "relative"
+rulers = [80, 100]
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.file-picker]
+hidden = false
+max-depth = 8
+
+[editor.statusline]
+center = ["version-control"]
+right = ["diagnostics", "selections", "position-percentage", "file-encoding"]

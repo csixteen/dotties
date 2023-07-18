@@ -1,0 +1,26 @@
+[[language]]
+name = "rust"
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+# On older versions of Helix, try using [language.config.check] instead
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.rustfmt]
+overrideCommand = ["rustup", "run", "nightly", "--", "rustfmt", "--edition", "2018", "--"]
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+file-types = ["nix"]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+language-server = { command = "rnix-lsp" }
+auto-format = true
