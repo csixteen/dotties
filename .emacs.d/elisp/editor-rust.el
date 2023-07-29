@@ -45,6 +45,7 @@
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
               ("M-?" . lsp-find-references)
+              ("C-c C-c C-g" . lsp-goto-implementation)
               ("C-c C-c l" . flycheck-list-errors)
               ("C-c C-c a" . lsp-execute-code-action)
               ("C-c C-c r" . lsp-rename)
@@ -66,10 +67,19 @@
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
+  (lsp-inlay-hint-enable t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-rust-analyzer-closing-brace-hints-min-lines 10)
+  (lsp-rust-analyzer-display-chaining-hints t)
+  (lsp-rust-analyzer-display-closure-return-type-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
+  (lsp-rust-analyzer-display-parameter-hints t)
+  (lsp-rust-analyzer-max-inlay-hint-length 25)
+  (lst-rust-analyzer-rustfmt-override-command
+    ["rustup" "run" "nightly" "--" "rustfmt" "--edition" "2018" "--"])
+  (lsp-rust-analyzer-server-display-inlay-hints t)
   (lsp-eldoc-render-all t)
   (lsp-idle-delay 0.6)
-  (lsp-rust-analyzer-server-display-inlay-hints t)
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
